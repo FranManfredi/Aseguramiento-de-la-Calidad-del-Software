@@ -1,4 +1,4 @@
-package numerosRomanos
+package RomanNumbers
 
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
