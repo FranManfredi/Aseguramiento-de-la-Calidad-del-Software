@@ -31,3 +31,45 @@ kover {
         }
     }
 }
+tasks.register('checkTodos') {
+    doLast {
+        def todoPattern = ~/(?i)\bTODO\b/
+        def todos = []
+
+        def files = fileTree(rootProject.layout.projectDirectory.asFile) {
+            include '**/*.java'
+            include '**/*.kt'
+            include '**/*.groovy'
+            include '**/*.gradle'
+            exclude '**/build/**'
+            exclude '**/.gradle/**'
+        }
+
+        files.each { file ->
+            int lineNumber = 0
+            file.eachLine { line ->
+                lineNumber++
+                if (line =~ todoPattern) {
+                    todos << [
+                            location: "${file.absolutePath}:${lineNumber}:1",
+                            text    : line.trim()
+                    ]
+                }
+            }
+        }
+
+        if (!todos.isEmpty()) {
+            logger.quiet("")
+            logger.quiet("TODOs encontrados:")
+            todos.each {
+                logger.quiet(it.location)
+                logger.quiet("  ${it.text}")
+            }
+            logger.quiet("")
+
+            throw new GradleException("Hay TODOs pendientes en el código.")
+        }
+
+        logger.lifecycle("No se encontraron TODOs")
+    }
+}
