@@ -6,49 +6,49 @@ import kotlin.test.assertEquals
 
 class RomanNumbersTest {
     val rnm = RomanNumberManager()
-    val romanNumber_one = RomanNumber(RomanNumberEnum.ONE)
-    val romanNumber_five = RomanNumber(RomanNumberEnum.FIVE)
-    val romanNumber_ten = RomanNumber(RomanNumberEnum.TEN)
-    val romanNumber_fifty = RomanNumber(RomanNumberEnum.FIFTY)
-    val romanNumber_oneHundred = RomanNumber(RomanNumberEnum.ONE_HUNDRED)
-    val romanNumber_fiveHundred = RomanNumber(RomanNumberEnum.FIVE_HUNDRED)
-    val romanNumber_thousand = RomanNumber(RomanNumberEnum.THOUSAND)
+    val romanNumberOne = RomanNumber(RomanNumberEnum.ONE)
+    val romanNumberFive = RomanNumber(RomanNumberEnum.FIVE)
+    val romanNumberTen = RomanNumber(RomanNumberEnum.TEN)
+    val romanNumberFifty = RomanNumber(RomanNumberEnum.FIFTY)
+    val romanNumberOneHundred = RomanNumber(RomanNumberEnum.ONE_HUNDRED)
+    val romanNumberFiveHundred = RomanNumber(RomanNumberEnum.FIVE_HUNDRED)
+    val romanNumberThousand = RomanNumber(RomanNumberEnum.THOUSAND)
 
     @Test
-    fun getRomanNumberTest(){
-        assertEquals("I", romanNumber_one.getValue())
-        assertEquals("V", romanNumber_five.getValue())
-        assertEquals("X", romanNumber_ten.getValue())
-        assertEquals("L", romanNumber_fifty.getValue())
-        assertEquals("C", romanNumber_oneHundred.getValue())
-        assertEquals("D", romanNumber_fiveHundred.getValue())
-        assertEquals("M", romanNumber_thousand.getValue())
+    fun getRomanNumberTest() {
+        assertEquals("I", romanNumberOne.getValue())
+        assertEquals("V", romanNumberFive.getValue())
+        assertEquals("X", romanNumberTen.getValue())
+        assertEquals("L", romanNumberFifty.getValue())
+        assertEquals("C", romanNumberOneHundred.getValue())
+        assertEquals("D", romanNumberFiveHundred.getValue())
+        assertEquals("M", romanNumberThousand.getValue())
     }
 
     @Test
-    fun throwErrorIfNumberIsNegative(){
+    fun throwErrorIfNumberIsNegative() {
         assertThrows(Exception::class.java) { rnm.transform(-10) }
     }
 
     @Test
-    fun transformSimpleNumber(){
+    fun transformSimpleNumber() {
         val result = rnm.transform(10)
         assertEquals("X", result)
     }
 
     @Test
-    fun transformComplexNumber(){
+    fun transformComplexNumber() {
         val result = rnm.transform(944)
         assertEquals("CMXLIV", result)
     }
 
     @Test
-    fun limitRomanNumbersTo3999(){
+    fun limitRomanNumbersTo3999() {
         assertThrows(Exception::class.java) { rnm.transform(4000) }
     }
 
     @Test
-    fun throwErrorIfNumberIsZero(){
+    fun throwErrorIfNumberIsZero() {
         assertThrows(Exception::class.java) { rnm.transform(0) }
     }
 }

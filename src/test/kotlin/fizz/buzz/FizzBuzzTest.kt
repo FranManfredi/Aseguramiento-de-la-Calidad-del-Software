@@ -1,21 +1,19 @@
 package fizz.buzz
 
-import fizz.buzz.FizzBuzz
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-class CalculatorTest {
-
+class FizzBuzzTest {
     @Test
-    fun returnNum(){
+    fun returnNum() {
         var fizzbuzz = FizzBuzz(6)
         assertEquals(6, fizzbuzz.getNumber())
     }
 
     @Test
     fun `Devolver fizz`() {
-        var multiplo_3 = 6
-        var fizzbuzz = FizzBuzz(multiplo_3)
+        var multiplo3 = 6
+        var fizzbuzz = FizzBuzz(multiplo3)
         var result = fizzbuzz.fizzBuzz()
 
         assertEquals("fizz", result)
@@ -23,8 +21,8 @@ class CalculatorTest {
 
     @Test
     fun `Devolver buzz`() {
-        var multiplo_5 = 10
-        var fizzbuzz = FizzBuzz(multiplo_5)
+        var multiplo5 = 10
+        var fizzbuzz = FizzBuzz(multiplo5)
         var result = fizzbuzz.fizzBuzz()
 
         assertEquals("buzz", result)
@@ -32,8 +30,8 @@ class CalculatorTest {
 
     @Test
     fun `Devolver fizzbuzz`() {
-        var multiplo_3_y_5 = 15
-        var fizzbuzz = FizzBuzz(multiplo_3_y_5)
+        var multiplo3y5 = 15
+        var fizzbuzz = FizzBuzz(multiplo3y5)
         var result = fizzbuzz.fizzBuzz()
 
         assertEquals("fizzbuzz", result)

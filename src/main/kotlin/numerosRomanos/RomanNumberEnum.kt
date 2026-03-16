@@ -1,6 +1,9 @@
 package numerosRomanos
 
-enum class RomanNumberEnum(val number: Int, val symbol: String) {
+enum class RomanNumberEnum(
+    val number: Int,
+    val symbol: String,
+) {
     ONE(1, "I"),
     FIVE(5, "V"),
     TEN(10, "X"),
@@ -13,5 +16,5 @@ enum class RomanNumberEnum(val number: Int, val symbol: String) {
     NINETY(90, "XC"),
     FORTY(40, "XL"),
     NINE(9, "IX"),
-    FOUR(4, "IV")
+    FOUR(4, "IV"),
 }

@@ -1,10 +1,7 @@
 package numerosRomanos
 
 class RomanNumber(
-    private val value: RomanNumberEnum
+    private val value: RomanNumberEnum,
 ) {
-    fun getValue() : String{
-        return value.symbol
-    }
-
+    fun getValue(): String = value.symbol
 }
