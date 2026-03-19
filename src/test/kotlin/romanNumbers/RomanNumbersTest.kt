@@ -1,4 +1,4 @@
-package RomanNumbers
+package romanNumbers
 
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
@@ -26,29 +26,41 @@ class RomanNumbersTest {
     }
 
     @Test
-    fun throwErrorIfNumberIsNegative() {
-        assertThrows(Exception::class.java) { rnm.transform(-10) }
+    fun throwErrorIfDecimalNumberIsNegative() {
+        assertThrows(Exception::class.java) { rnm.transformToRoman(-10) }
     }
 
     @Test
-    fun transformSimpleNumber() {
-        val result = rnm.transform(10)
+    fun transformSimpleDecimalNumber() {
+        val result = rnm.transformToRoman(10)
         assertEquals("X", result)
     }
 
     @Test
-    fun transformComplexNumber() {
-        val result = rnm.transform(944)
+    fun transformComplexDecimalNumber() {
+        val result = rnm.transformToRoman(944)
         assertEquals("CMXLIV", result)
     }
 
     @Test
     fun limitRomanNumbersTo3999() {
-        assertThrows(Exception::class.java) { rnm.transform(4000) }
+        assertThrows(Exception::class.java) { rnm.transformToRoman(4000) }
     }
 
     @Test
-    fun throwErrorIfNumberIsZero() {
-        assertThrows(Exception::class.java) { rnm.transform(0) }
+    fun throwErrorIfDecimalNumberIsZero() {
+        assertThrows(Exception::class.java) { rnm.transformToRoman(0) }
+    }
+
+    @Test
+    fun transformSimpleRomanNumber() {
+        val result = rnm.getOptimalRomanEnum("IX").number
+        assertEquals(9, result)
+    }
+
+    @Test
+    fun transformComplexRomanNumber() {
+        val result = rnm.transformToDecimal("CMXLIV")
+        assertEquals(944, result)
     }
 }

@@ -1,4 +1,4 @@
-package RomanNumbers
+package romanNumbers
 
 class RomanNumber(
     private val value: RomanNumberEnum,

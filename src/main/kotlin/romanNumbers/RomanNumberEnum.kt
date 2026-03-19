@@ -1,4 +1,4 @@
-package RomanNumbers
+package romanNumbers
 
 enum class RomanNumberEnum(
     val number: Int,
