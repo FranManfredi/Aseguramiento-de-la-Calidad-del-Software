@@ -1,15 +1,18 @@
 classDiagram
     class Product {
-        String name
-        String description
-        login()
+        +String name
+        +String description
     }
 
     class Cart {
-        Product[] cart
-        addToCart(product : Product)
-        removeFromCart(product : Product)
-        isEmpty() : Boolean
+        -List~Product~ cart
+        +addToCart(product: Product)
+        +addToCart(products: List~Product~)
+        +removeFromCart(product: Product)
+        +removeAllFromCart()
+        +removeAllFromCart(product: Product)
+        +isEmpty() : Boolean
+        +getNumberOfProducts() : Int
     }
 
-    Product <-- Cart
+    Cart --> Product : contains
