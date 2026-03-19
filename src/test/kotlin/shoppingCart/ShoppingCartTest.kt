@@ -1,6 +1,7 @@
 package shoppingCart
 
 import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -83,8 +84,19 @@ class ShoppingCartTest {
         assertEquals(1, cart.getNumberOfProducts())
     }
 
+    @Test
+    fun `test010 - product must have price`() {
+        val product = Product("papas fritas", "papas fritas marca Peguamar", Dollar(2.50))
+        assertEquals(2.50, product.checkPrice())
+    }
+
+    @Test
+    fun `test011 - product can't have negative price`() {
+        assertThrows(IllegalArgumentException::class.java) {
+            Product("papas fritas", "papas fritas marca Peguamar", Dollar(-2.50))
+        }
+    }
+
     //  TODO:
-    //      agreguen el precio:
-    //          faltaria pensar como agregar el precio, si hacerlo una variable o ponerlo por separado.
     //      podemos arrancar a hacer el cajero
 }
