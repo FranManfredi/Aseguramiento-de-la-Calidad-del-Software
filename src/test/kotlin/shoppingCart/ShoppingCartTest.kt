@@ -2,7 +2,6 @@ package shoppingCart
 
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 
 class ShoppingCartTest {
@@ -84,13 +83,8 @@ class ShoppingCartTest {
         assertEquals(1, cart.getNumberOfProducts())
     }
 
-    @Test
-    fun `test0010 - remove single type product from cart`() {
-
-    }
-
-    //todo
-    // agreguen el precio:
-//        node
-    // podemos arrancar a hacer el cajero
+    // todo
+    //  agreguen el precio:
+    //      faltaria pensar como agregar el precio, si hacerlo una variable o ponerlo por separado.
+    //  podemos arrancar a hacer el cajero
 }
