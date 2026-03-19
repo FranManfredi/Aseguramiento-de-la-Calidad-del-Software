@@ -6,33 +6,33 @@ import kotlin.test.assertEquals
 class FizzBuzzTest {
     @Test
     fun returnNum() {
-        var fizzbuzz = FizzBuzz(6)
+        val fizzbuzz = FizzBuzz(6)
         assertEquals(6, fizzbuzz.getNumber())
     }
 
     @Test
-    fun `Devolver fizz`() {
-        var multiplo3 = 6
-        var fizzbuzz = FizzBuzz(multiplo3)
-        var result = fizzbuzz.fizzBuzz()
+    fun returnFizz() {
+        val multiplo3 = 6
+        val fizzbuzz = FizzBuzz(multiplo3)
+        val result = fizzbuzz.fizzBuzz()
 
         assertEquals("fizz", result)
     }
 
     @Test
-    fun `Devolver buzz`() {
-        var multiplo5 = 10
-        var fizzbuzz = FizzBuzz(multiplo5)
-        var result = fizzbuzz.fizzBuzz()
+    fun returnBuzz() {
+        val multiplo5 = 10
+        val fizzbuzz = FizzBuzz(multiplo5)
+        val result = fizzbuzz.fizzBuzz()
 
         assertEquals("buzz", result)
     }
 
     @Test
-    fun `Devolver fizzbuzz`() {
-        var multiplo3y5 = 15
-        var fizzbuzz = FizzBuzz(multiplo3y5)
-        var result = fizzbuzz.fizzBuzz()
+    fun returnFizzBuzz() {
+        val multiplo3y5 = 15
+        val fizzbuzz = FizzBuzz(multiplo3y5)
+        val result = fizzbuzz.fizzBuzz()
 
         assertEquals("fizzbuzz", result)
     }
