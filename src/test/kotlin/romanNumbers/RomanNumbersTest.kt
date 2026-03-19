@@ -54,7 +54,7 @@ class RomanNumbersTest {
 
     @Test
     fun transformSimpleRomanNumber() {
-        val result = rnm.getOptimalRomanEnum("IX").number
+        val result = rnm.transformToDecimal("IX")
         assertEquals(9, result)
     }
 

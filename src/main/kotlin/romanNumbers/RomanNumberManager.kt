@@ -28,7 +28,7 @@ class RomanNumberManager {
         return currentNum
     }
 
-    fun getOptimalRomanEnum(romanNumber: String): RomanNumberEnum {
+    private fun getOptimalRomanEnum(romanNumber: String): RomanNumberEnum {
         val twoChars = romanNumber.take(2)
         val oneChar = romanNumber.take(1)
 
