@@ -20,7 +20,7 @@ class Cart {
     }
 
     fun removeAllFromCart(product: Product) {
-            cart.removeAll { it == product }
+        cart.removeAll { it == product }
     }
 
     fun isEmpty(): Boolean = cart.isEmpty()
