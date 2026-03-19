@@ -41,12 +41,56 @@ class ShoppingCartTest {
     fun `test005 - try remove product with empty cart`() {
         val cart = Cart()
         val product = Product("papas fritas", "papas fritas marca Peguamar")
-        assertThrows<IllegalStateException> { cart.removeFromCart(product) }
+        cart.removeFromCart(product)
+        assertEquals(true, cart.isEmpty())
+    }
+
+    @Test
+    fun `test006 - add more than one product`() {
+        val cart = Cart()
+        val product = Product("papas fritas", "papas fritas marca Peguamar")
+        val listOfProducts = listOf(product, product)
+        cart.addToCart(listOfProducts)
+        assertEquals(false, cart.isEmpty())
+    }
+
+    @Test
+    fun `test007 - show how many products does cart have`() {
+        val cart = Cart()
+        val product = Product("papas fritas", "papas fritas marca Peguamar")
+        val listOfProducts = listOf(product, product)
+        cart.addToCart(listOfProducts)
+        assertEquals(2, cart.getNumberOfProducts())
+    }
+
+    @Test
+    fun `test008 - remove all products from cart`() {
+        val cart = Cart()
+        val product = Product("papas fritas", "papas fritas marca Peguamar")
+        val listOfProducts = listOf(product, product)
+        cart.addToCart(listOfProducts)
+        cart.removeAllFromCart()
+        assertEquals(true, cart.isEmpty())
+    }
+
+    @Test
+    fun `test009 - remove all of single type product from cart`() {
+        val cart = Cart()
+        val product1 = Product("papas fritas", "papas fritas marca Peguamar")
+        val product2 = Product("cocacola", "botella de 2.5 litros")
+        val listOfProducts = listOf(product1, product1, product2, product1)
+        cart.addToCart(listOfProducts)
+        cart.removeAllFromCart(product1)
+        assertEquals(1, cart.getNumberOfProducts())
+    }
+
+    @Test
+    fun `test0010 - remove single type product from cart`() {
+
     }
 
     //todo
-    // agregar mas de un producto (simetria)
-    // agregar dos productos iguales (simetria)
-    // agreguen el precio
+    // agreguen el precio:
+//        node
     // podemos arrancar a hacer el cajero
 }

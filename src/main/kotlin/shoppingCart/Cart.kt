@@ -1,18 +1,29 @@
 package shoppingCart
 
 class Cart {
-    val cart = mutableListOf<Product>()
+    private val cart = mutableListOf<Product>()
 
     fun addToCart(product: Product) {
         cart.add(product)
     }
 
+    fun addToCart(product: List<Product>) {
+        cart.addAll(product)
+    }
+
     fun removeFromCart(product: Product) {
-        if (isEmpty()) {
-            throw IllegalStateException("Cart is empty")
-        }
         cart.remove(product)
     }
 
+    fun removeAllFromCart() {
+        cart.clear()
+    }
+
+    fun removeAllFromCart(product: Product) {
+        cart.removeAll{ it == product }
+    }
+
     fun isEmpty(): Boolean = cart.isEmpty()
+
+    fun getNumberOfProducts(): Int = cart.size
 }
