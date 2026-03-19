@@ -83,8 +83,8 @@ class ShoppingCartTest {
         assertEquals(1, cart.getNumberOfProducts())
     }
 
-    // todo
-    //  agreguen el precio:
-    //      faltaria pensar como agregar el precio, si hacerlo una variable o ponerlo por separado.
-    //  podemos arrancar a hacer el cajero
+    //  TODO:
+    //      agreguen el precio:
+    //          faltaria pensar como agregar el precio, si hacerlo una variable o ponerlo por separado.
+    //      podemos arrancar a hacer el cajero
 }
