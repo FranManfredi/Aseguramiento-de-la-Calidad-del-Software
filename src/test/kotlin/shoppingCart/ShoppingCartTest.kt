@@ -85,15 +85,24 @@ class ShoppingCartTest {
     }
 
     @Test
-    fun `test010 - product must have price`() {
-        val product = Product("papas fritas", "papas fritas marca Peguamar", Dollar(2.50))
-        assertEquals(2.50, product.checkPrice())
+    fun `test010 - create Catalog`() {
+        val entrees =
+            listOf<Entree>(
+                Entree(Product("pepsi", "de 2 lt"), Dollar(2.0)),
+            )
+        val catalog = Catalog(entrees)
+        assertEquals(entrees, catalog.showEntrees())
     }
 
     @Test
-    fun `test011 - product can't have negative price`() {
+    fun `test011 - cannot have same product in catalog`() {
         assertThrows(IllegalArgumentException::class.java) {
-            Product("papas fritas", "papas fritas marca Peguamar", Dollar(-2.50))
+            val entrees =
+                listOf<Entree>(
+                    Entree(Product("pepsi", "de 2 lt"), Dollar(2.00)),
+                    Entree(Product("pepsi", "de 2 lt"), Dollar(3.50)),
+                )
+            val catalog = Catalog(entrees)
         }
     }
 
