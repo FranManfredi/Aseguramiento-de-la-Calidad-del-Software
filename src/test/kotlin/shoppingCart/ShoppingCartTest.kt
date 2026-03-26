@@ -102,10 +102,68 @@ class ShoppingCartTest {
                     Entree(Product("pepsi", "de 2 lt"), Dollar(2.00)),
                     Entree(Product("pepsi", "de 2 lt"), Dollar(3.50)),
                 )
-            val catalog = Catalog(entrees)
+            Catalog(entrees)
+        }
+    }
+
+    @Test
+    fun `test012 - cashier must exist`() {
+        val entrees =
+            listOf<Entree>(
+                Entree(Product("pepsi", "de 2 lt"), Dollar(2.00)),
+                Entree(Product("coca cola", "de 2 lt"), Dollar(3.50)),
+            )
+        val cashier = Cashier(Catalog(entrees))
+        assertNotNull(cashier.getCatalog())
+    }
+
+    @Test
+    fun `test013 - payment options must exist`() {
+        assertNotNull(DebitCard(Dollar(100.00)))
+        assertNotNull(CreditCard(Dollar(100.00), Dollar(200.00)))
+        assertNotNull(Cash(Dollar(100.00)))
+    }
+
+    @Test
+    fun `test013 - checkout of cart with cash`() {
+        val cart = Cart()
+        val product1 = Product("papas fritas", "papas fritas marca Peguamar")
+        val product2 = Product("cocacola", "botella de 2.5 litros")
+        val listOfProducts = listOf(product1, product2, product2, product1)
+        cart.addToCart(listOfProducts)
+        val entrees =
+            listOf<Entree>(
+                Entree(product1, Dollar(2.00)),
+                Entree(product2, Dollar(3.50)),
+            )
+        val cashier = Cashier(Catalog(entrees))
+        val cash = Cash(Dollar(20.00))
+        cashier.checkout(cart, cash)
+        assertEquals(9.00, cash.getAmount())
+        assertEquals(true, cart.isEmpty())
+    }
+
+    @Test
+    fun `test014 - throw error if product is in cart but not in catalog`() {
+        val cart = Cart()
+        val product1 = Product("papas fritas", "papas fritas marca Peguamar")
+        val product2 = Product("cocacola", "botella de 2.5 litros")
+        val listOfProducts = listOf(product1, product2, product2, product1)
+        cart.addToCart(listOfProducts)
+        val entrees =
+            listOf<Entree>(
+                Entree(product1, Dollar(2.00)),
+            )
+        val cashier = Cashier(Catalog(entrees))
+        val cash = Cash(Dollar(20.00))
+        assertThrows(IllegalArgumentException::class.java) {
+            cashier.checkout(cart, cash)
         }
     }
 
     //  TODO:
-    //      podemos arrancar a hacer el cajero
+    //     hacer el cajero
+    //          implementar los metodos tradicionales de credito y debito (hacer bien inyeccion de dependencia)
+    //     ofertas, promos y descuentos
+    //     TRUEQUE al pagar con el cajero
 }

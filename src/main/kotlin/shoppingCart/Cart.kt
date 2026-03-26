@@ -3,6 +3,8 @@ package shoppingCart
 class Cart {
     private val cart = mutableListOf<Product>()
 
+    fun getProducts(): List<Product> = cart
+
     fun addToCart(product: Product) {
         cart.add(product)
     }
