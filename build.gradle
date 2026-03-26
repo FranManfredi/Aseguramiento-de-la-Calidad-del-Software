@@ -32,9 +32,9 @@ kover {
         }
     }
 }
-tasks.register('checkTodos') {
+tasks.register('checkFixmes') {
     doLast {
-        def todoPattern = ~/(?i)\bTODO\b/
+        def todoPattern = ~/(?i)\bFIXME\b/
         def todos = []
 
         def files = fileTree(rootProject.layout.projectDirectory.asFile) {
@@ -61,7 +61,7 @@ tasks.register('checkTodos') {
 
         if (!todos.isEmpty()) {
             logger.quiet("")
-            logger.quiet("TODOs encontrados:")
+            logger.quiet("FIXMEs encontrados:")
             todos.each {
                 logger.quiet(it.location)
                 logger.quiet("  ${it.text}")
